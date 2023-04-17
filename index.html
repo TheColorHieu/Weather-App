@@ -14,13 +14,15 @@
     <!-- creating the header -->
     <header class = "container-fluid text-center text-white bg-primary p-2">
     <h1>Weather Dashboard</h1>
+    
 </header>
 <!-- making the search bar  -->
 <form class="col-lg-3 bg-light">
     <div class="d-flex flex-column">
-      <input class="form-control form-control-sm mb-5 mr-sm-8" id ="input" type="search" placeholder="Enter a city" aria-label="Search" style="padding: 0.25rem 0.5rem; font-size: 4rem;">
+      <input class="form-control form-control-sm mb-5 mr-sm-8" id ="city" name="city" type="search" placeholder="Enter a city" aria-label="Search" style="padding: 0.25rem 0.5rem; font-size: 4rem;">
       <!-- changed it to a primary button so that it can be blue -->
       <button id = "output" class="btn btn-primary btn-sm"  type="submit" style="padding: 0.25rem 0.5rem; font-size: 3.5rem;">Search</button>
+      
     </div>
     <!-- creating the history -->
     <ul class = "list-group history"></ul>
