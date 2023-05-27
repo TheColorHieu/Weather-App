@@ -9,21 +9,13 @@
 // WHEN I click on a city in the search history
 // THEN I am again presented with current and future conditions for that city
 
-//creating a button 
+//search button listener
 const button = document.getElementById('output')
-
-button.addEventListener('click',function (event){
-    event.preventDefault();
-    const city = document.getElementById('city').value;
-    //implementing the code with our button
-    fetchWeatherData(city)
-    .then(data => {
-        console.log('Weather data:', data);
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
-
+searchBtn.on("click", function() {
+  const city =searchInput.val();
+  searchInput.val("");
+  weatherFunction(city);
+  weatherForecast(city);
 });
 
 //creating the fetch function 
@@ -35,6 +27,7 @@ function fetchWeatherData(city) {
       .then(response => response.json())
       .then(data => {
         console.log('Yippie it works!')
+        
         return data;
       })
       //checking for our erros 
