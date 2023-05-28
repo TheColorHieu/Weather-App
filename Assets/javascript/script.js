@@ -9,31 +9,25 @@
 // WHEN I click on a city in the search history
 // THEN I am again presented with current and future conditions for that city
 
+$(document).ready(function (){
 //search button listener
-const button = document.getElementById('output')
-searchBtn.on("click", function() {
-  const city =searchInput.val();
-  searchInput.val("");
-  weatherFunction(city);
-  weatherForecast(city);
+$("#searchBtn").on("click", function (){
+//here is where the user will put in the location
+const searchInput = $("#searchInput").val(); 
+})
+//here we will have an empty input field
+$("#searchInput").val("");
+  weatherFunction(searchInput);
+  weatherForecast(searchInput);
 });
+//here we will be adding our searches to the local storage
+const userHistory = JSON.parse(localStorage.getItem("history")) || [];
 
 //creating the fetch function 
-function fetchWeatherData(city) {
-    const apiKey = 'e9a2983c2714f2ea8438474602154f62';
-    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+function fetchWeatherData(searchInput) {
+    // const apiKey = 'e9a2983c2714f2ea8438474602154f62';
+    // const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   
-    return fetch(apiUrl)
-      .then(response => response.json())
-      .then(data => {
-        console.log('Yippie it works!')
-        
-        return data;
-      })
-      //checking for our erros 
-      .catch(error => {
-        console.error('Error fetching weather data:', error);
-      });
   }
   
 
