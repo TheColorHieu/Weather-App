@@ -51,7 +51,10 @@ $(document).ready(function() {
         var cardBody = $("<div>").addClass("card-body");
         var wind = $("<p>").addClass("card-text").text("Wind Speed: " + data.wind.speed + " MPH");
         var humid = $("<p>").addClass("card-text").text("Humidity: " + data.main.humidity + " %");
-        var temp = $("<p>").addClass("card-text").text("Temperature: " + data.main.temp + " K");
+        // var temp = $("<p>").addClass("card-text").text("Temperature: " + data.main.temp + " F");
+        var tempFahrenheit = (data.main.temp - 273.15) * 9/5 + 32;
+        var temp = $("<p>").addClass("card-text").text("Temperature: " + tempFahrenheit.toFixed(2) + " F");
+
         console.log(data);
         var lon = data.coord.lon;
         var lat = data.coord.lat;
