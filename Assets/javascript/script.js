@@ -42,6 +42,8 @@ $(document).ready(function() {
           localStorage.setItem("userHistory", JSON.stringify(userHistory));
           createRow(searchInput);
         }
+        displaySearchHistory();
+  
         // clearing out the old content
         $("#current").empty();
         // here we will be appending the data
@@ -86,6 +88,27 @@ $(document).ready(function() {
         console.log(data);
       });
     }
+    function displaySearchHistory() {
+      $("#searchHistory").empty(); // Clear the existing search history
+    
+      // Retrieve the search history from local storage
+      const userHistory = JSON.parse(localStorage.getItem("userHistory")) || [];
+    
+      // Loop through the search history and create a list item for each search
+      for (let i = 0; i < userHistory.length; i++) {
+        const searchItem = $("<li>").addClass("search-item").text(userHistory[i]);
+    
+        // Add a click event listener to each search item to fetch weather data when clicked
+        searchItem.on("click", function() {
+          const searchText = $(this).text();
+          fetchWeatherData(searchText);
+          weatherForecast(searchText);
+        });
+    
+        $("#searchHistory").append(searchItem);
+      }
+    }
+    
   
     function weatherForecast(searchInput) {
       $.ajax({
